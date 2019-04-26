@@ -101,7 +101,7 @@ def report():
 Number = 5
 @back.route('/article/<int:page>/', methods=['GET'])
 @is_login
-def article(page):
+def article1(page):
     if request.method == 'GET':
         pages = math.ceil(len(request.arts)/Number)
         art_list = Article.query.order_by(-Article.id).offset((page-1)*Number).limit(Number).all()
@@ -109,10 +109,11 @@ def article(page):
 
 @back.route('/article/', methods=['GET'])
 @is_login
-def article1():
-    pages = math.ceil(len(request.arts) / Number)
-    art_list = Article.query.order_by(-Article.id).offset(0).limit(Number).all()
-    return render_template('back/article.html', a='article', username=request.user, state=request.state, art_list=art_list, types=request.types,arts=request.arts,pages=pages,Number=Number)
+def article():
+    if request.method == 'GET':
+        pages = math.ceil(len(request.arts) / Number)
+        art_list = Article.query.order_by(-Article.id).offset(0).limit(Number).all()
+        return render_template('back/article.html', a='article', username=request.user, state=request.state, art_list=art_list, types=request.types,arts=request.arts,pages=pages,Number=Number)
 
 
 

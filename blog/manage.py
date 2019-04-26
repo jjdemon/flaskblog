@@ -24,7 +24,7 @@ app.config['SESSION_REDIS'] = redis.Redis(host='127.0.0.1',port=6379)
 app.secret_key = 'fdtyd14124gytrwfh4t5765454u5643yufgrasfc'
 Session(app)
 # 配置数据库链接信息
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:234@127.0.0.1:3306/python1901'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:234234@127.0.0.1:3306/python1901'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
