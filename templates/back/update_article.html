@@ -38,9 +38,9 @@
                   <li>
                     <label>
                         {% if art.type == type.id %}
-                            <input name="category" type="radio" value="{{ loop.index }}" checked>
+                            <input name="category" type="radio" value="{{ type.id }}" checked>
                         {% else %}
-                            <input name="category" type="radio" value="{{ loop.index }} ">
+                            <input name="category" type="radio" value="{{ type.id }} ">
                         {% endif %}
                       {{ type.t_name }}
                     </label>
