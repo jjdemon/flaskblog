@@ -327,19 +327,19 @@ def delete_category(id):
 
 # 数据库操作
 
-@back.route('/create_db/', methods=['GET'])
-def create_db():
+#@back.route('/create_db/', methods=['GET'])
+#def create_db():
     # 生成数据库中的表
     # 将模型映射成数据库中的表(对第一次使用有用)
-    db.create_all()
-    return '创建表成功'
+ #   db.create_all()
+  #  return '创建表成功'
 
 
-@back.route('/drop_db/', methods=['GET'])
-def drop_db():
+#@back.route('/drop_db/', methods=['GET'])
+#def drop_db():
     # 删除数据库中所有的表
-    db.drop_all()
-    return '删除表成功'
+ #   db.drop_all()
+  #  return '删除表成功'
 
 
 
