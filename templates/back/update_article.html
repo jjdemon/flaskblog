@@ -5,6 +5,7 @@
         <form action="{{ url_for('back.update_article',id=id) }}" method="post" class="add-article-form">
           <div class="col-md-9">
             <h1 class="page-header">文章修改</h1>
+              {{ error }}
             <div class="form-group">
               <label for="article-title" class="sr-only">标题</label>
               <input type="text" id="article-title" name="title" class="form-control" placeholder="在此处输入标题" value="{{ art.title }}" required autofocus autocomplete="off">

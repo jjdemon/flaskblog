@@ -155,31 +155,21 @@ def update_article(id):
     if request.method == 'GET':
         art = Article.query.filter(Article.id == id).first()
         types = ArticleType.query.all()
-        return render_template('back/update_article.html', a='article',id=id,art=art,types=types)
+        return render_template('back/update_article.html', a='article',id=id,art=art,types=types,error = '')
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
         type = request.form.get('category')
         print(title,content,type)
-        # art = Article.query.filter(Article.id == id).first()
-        # types = ArticleType.query.all()
-        # if title and type:
-        #     # 保存栏目信息,判断该栏目是否存在
-        #
-        #     title_name = Article.query.filter(Article.title == title).first()
-        #     type = Article.query.filter(Article.type == type).first()
-        #
-        #     if title_name and type:
-        #         return redirect(url_for('back.article'))
-        #     if title_name:
-        #         # 判断该题目已有,请更换栏目信息
-        #         error = '该题目已有,请更换栏目信息'
-        #         return render_template('back/update_article.html',art=art, a='category',title_name = title_name,type = type,id=id,error=error,types=types)
-        #     if type:
-        #         # 判断该题目已有,请更换栏目信息
-        #         error = '该题目已有,请更换栏目信息'
-        #         return render_template('back/update_article.html', a='category',
-        #                                title_name = title_name,art=art,type = type,id=id,error=error,types=types)
+        art = Article.query.filter(Article.id == id).first()
+        types = ArticleType.query.all()
+        if title and type and content:
+            # 保存栏目信息,判断该栏目是否存在
+            title_name = Article.query.filter(Article.title == title).first()
+            type_name = Article.query.filter(Article.type == type).first()
+            if title_name and type_name:
+                error = '文章题目已存在'
+                return render_template('back/update_article.html', a='article', id=id, art=art, types=types, error=error)
         articles = Article.query.filter(Article.id==id).first()
         articles.title = title
         articles.content = content
